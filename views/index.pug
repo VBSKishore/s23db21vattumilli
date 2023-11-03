@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Kishore
+  p Welcome to #{title}
+  p I am Kishore
+  button(type="button", class="btn btn-outline-success", onclick="goFaster()") PressMe
+  div(id="faster") Increase the speed
+  a(href="/Apartment") To View Apartment Pages
+  script.
+    var mph = 20;
+    var change = 1;
+    function goFaster() {
+      mph += change;
+      change += 1;
+      document.getElementById('faster').innerHTML = `MPH ${mph} with change ${change}`;
+    }
+
+    
