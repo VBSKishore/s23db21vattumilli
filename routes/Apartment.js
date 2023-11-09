@@ -1,9 +1,7 @@
 var express = require('express');
+const Apartment_controlers= require('../controllers/Apartment');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Apartment', { title: 'Search Results Apartment'});
-});
-
+/* GET Apartments */
+router.get('/', Apartment_controlers.Apartment_view_all_Page );
 module.exports = router;
+
