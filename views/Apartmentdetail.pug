@@ -1,22 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  - let Apartmentid = toShow._id
-  - let name = toShow.name
-  - let price = toShow.price
-  - let Location = toShow.Location
+  if (toShow == null)
+    h2 No instance to detail
+  else
+    h1= title
+    - let Apartmentid = toShow._id
+    - let name = toShow.name
+    - let price = toShow.price
+    - let Location = toShow.Location
 
-  div
-    div.row
-      div(class='ApartmentAttr mr-3') Apartment ID is:
-      div #{Apartmentid}
-    div.row
-      div(class='ApartmentAttr mr-3') Apartment Type is:
-      div #{name}
-    div.row
-      div(class='ApartmentAttr mr-3') Apartment Location is:
-      div #{Location}
-    div.row
-      div(class='ApartmentAttr mr-3') Apartment price is:
-      div #{price}
+    div(style='margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);')
+      div.row(style='margin-bottom: 10px;')
+        div(class='ApartmentAttr mr-3' style='font-weight: bold;') Apartment ID is:
+        div(style='color: #3366cc;') #{Apartmentid}
+      div.row(style='margin-bottom: 10px;')
+        div(class='ApartmentAttr mr-3' style='font-weight: bold;') Apartment Type is:
+        div(style='color: #008000;') #{name}
+      div.row(style='margin-bottom: 10px;')
+        div(class='ApartmentAttr mr-3' style='font-weight: bold;') Apartment Location is:
+        div(style='color: #ff9900;') #{Location}
+      div.row(style='margin-bottom: 10px;')
+        div(class='ApartmentAttr mr-3' style='font-weight: bold;') Apartment price is:
+        div(style='color: #e44d26;') #{price}
