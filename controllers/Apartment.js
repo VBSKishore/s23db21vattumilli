@@ -97,7 +97,7 @@ ${JSON.stringify(req.body)}`)
 failed`);
     }
 };
-// Handle Costume delete on DELETE.
+// Handle Apartment delete on DELETE.
 exports.Apartment_delete = async function (req, res) {
     console.log("delete " + req.params.id)
     try {
@@ -122,7 +122,7 @@ exports.Apartment_view_one_Page = async function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
-// Handle building the view for creating a costume.
+// Handle building the view for creating a Apartment.
 // No body, no in path parameter, no query.
 // Does not need to be async
 exports.Apartment_create_Page = function (req, res) {
@@ -135,12 +135,12 @@ exports.Apartment_create_Page = function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
-// Handle building the view for updating a costume.
+// Handle building the view for updating a Apartment.
 // query provides the id
 exports.Apartment_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
-    let result = await Costume.findById(req.query.id)
+    let result = await Apartment.findById(req.query.id)
     res.render('Apartmentupdate', { title: 'Apartment Update', toShow: result });
     }
     catch(err){
