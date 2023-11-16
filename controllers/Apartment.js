@@ -97,4 +97,29 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+// Handle Costume delete on DELETE.
+exports.Apartment_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Apartment.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    // Handle a show one view with id specified by query
+exports.Apartment_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Apartment.findById( req.query.id)
+    res.render('Apartmentdetail',
+    { title: 'Apartment Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
 
