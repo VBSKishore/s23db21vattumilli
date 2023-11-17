@@ -57,8 +57,8 @@ exports.Apartment_create_post = async function (req, res) {
     document.price = req.body.price;
     document.Location = req.body.Location;
     try {
-        let result = await document.save();
-        res.send(result);
+        let results = await document.save();
+        res.send(results);
     }
     catch (err) {
         res.status(500);

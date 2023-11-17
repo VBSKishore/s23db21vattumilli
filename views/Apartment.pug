@@ -2,13 +2,14 @@ extends layout
 
 block content
   h1= title
-   - let results = [{ name: "Sai ram complex", price: 1000, Location:"Hyderabad" },{ name: "The Enclave", price: 56000, Location: "Taranaka" },{ name: "The Oasis", price: 2000, Location: "Narayanaguda" }]
+   - let items = results
   div.container-fluid
     div.row
       each Apartment,index in results
        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.name}
        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.Location}
        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.price}
+        button.btn.btn-primary.ml-1(onclick=`dispatch(\"/Apartment/update?id=${Apartment._id}\")`) Update
        br
        hr
 
@@ -16,4 +17,8 @@ block content
       function buy(index)
       {
         alert(`you purchased Item ${index+1}`)
+      }
+      function dispatch(path)
+      {
+        window.location.href=path
       }
