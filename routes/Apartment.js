@@ -12,19 +12,20 @@ const secured = (req, res, next) => {
   } 
 /* GET Apartments */
 router.get('/', Apartment_controlers.Apartment_view_all_Page );
+router.get('/Apartment/:id',Apartment_controlers.Apartment_detail);
 
 /* GET detail Apartment page */
-router.get('/detail', Apartment_controlers.Apartment_view_one_Page);
+router.get('/detail', secured, Apartment_controlers.Apartment_view_one_Page);
 
 /* GET create Apartment page */
-router.get('/create', Apartment_controlers.Apartment_create_Page);
+router.get('/create', secured, Apartment_controlers.Apartment_create_Page);
 
 /* GET update costume page */
 router.get('/update', secured, Apartment_controlers.Apartment_update_Page);
 
 
 /* GET delete Apartment page */
-router.get('/delete', Apartment_controlers.Apartment_delete_Page);
+router.get('/delete', secured, Apartment_controlers.Apartment_delete_Page);
 
 
 

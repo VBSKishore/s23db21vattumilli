@@ -2,23 +2,24 @@ extends layout
 
 block content
   h1= title
-   - let items = results
-  div.container-fluid
+  - let items = results
+  .container-fluid
+    a(class="btn btn-warning" href="/Apartment/create") Create
     div.row
-      each Apartment,index in results
-       div.col-sm-2(onclick=`buy(${index})`) #{Apartment.name}
-       div.col-sm-2(onclick=`buy(${index})`) #{Apartment.Location}
-       div.col-sm-2(onclick=`buy(${index})`) #{Apartment.price}
-        button.btn.btn-primary.ml-1(onclick=`dispatch(\"/Apartment/update?id=${Apartment._id}\")`) Update
-       br
-       hr
+      each Apartment, index in results
+        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.name}
+        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.Location}
+        div.col-sm-2(onclick=`buy(${index})`) #{Apartment.price}
+        button.btn.btn-primary.ml-1(onclick=`dispatch("/Apartment/update?id=${Apartment._id}")`) Update
+        a.btn.btn-danger.ml-1(href=`/Apartment/delete?id=${Apartment._id}`) Delete
+        a.btn.btn-secondary.ml-1(href=`/Apartment/detail?id=${Apartment._id}`) Details
+        br
+        hr
 
-  script. 
-      function buy(index)
-      {
-        alert(`you purchased Item ${index+1}`)
-      }
-      function dispatch(path)
-      {
-        window.location.href=path
-      }
+  script.
+    function buy(index) {
+      alert(`You purchased Item ${index + 1}`);
+    }
+    function dispatch(path) {
+      window.location.href = path;
+    }
